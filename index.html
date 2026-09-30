@@ -1,9 +1,435 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Talel Zerai — CV</title>
+  <meta name="description" content="CV d'une page — Talel Zerai, responsable de communication et d'administration, Tunis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1c1917;
+      --muted: #57534e;
+      --line: #d6d3d1;
+      --accent: #1e3a5f;
+      --paper: #fffcf8;
+      --screen: #e7e5e4;
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--screen);
+      color: var(--ink);
+      font-family: Inter, "Liberation Sans", "Noto Sans", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: rgba(231, 229, 228, 0.92);
+      backdrop-filter: blur(8px);
+    }
+
+    .toolbar a, .toolbar button {
+      font: 600 13px/1 Inter, sans-serif;
+      letter-spacing: 0.02em;
+      color: #fff;
+      background: var(--accent);
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 16px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .sheet-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 12px 16px 48px;
+    }
+
+    .cv {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      overflow: hidden;
+      background: var(--paper);
+      padding: 14mm 15mm 13mm;
+      box-shadow: 0 18px 50px rgba(28, 25, 23, 0.18);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 20px;
+      align-items: end;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    h1 {
+      font-family: "Noto Serif Display", "Liberation Serif", Georgia, serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .role {
+      margin-top: 5px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .contact {
+      text-align: right;
+      font-size: 10.5px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .meta {
+      grid-column: 1 / -1;
+      font-size: 10.5px;
+      color: var(--muted);
+    }
+
+    .profil {
+      margin: 11px 0 14px;
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.55fr 0.95fr;
+      gap: 0 18px;
+    }
+
+    .aside {
+      padding-left: 14px;
+      border-left: 1px solid var(--line);
+    }
+
+    h2 {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 7px;
+    }
+
+    .job {
+      margin-bottom: 11px;
+    }
+
+    .job-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .job h3 {
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .dates {
+      flex: 0 0 auto;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .org {
+      font-size: 10.5px;
+      color: var(--muted);
+      margin: 1px 0 3px;
+    }
+
+    .org em {
+      font-style: italic;
+      color: #78716c;
+    }
+
+    ul {
+      padding-left: 14px;
+      font-size: 11px;
+      line-height: 1.42;
+    }
+
+    li { margin-bottom: 1px; }
+
+    .edu, .side-block {
+      margin-bottom: 16px;
+    }
+
+    .edu-item {
+      margin-bottom: 7px;
+    }
+
+    .edu-item strong {
+      display: block;
+      font-size: 11px;
+      line-height: 1.25;
+    }
+
+    .edu-item span {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .chips span {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent);
+      background: #eef2f7;
+      border-radius: 999px;
+      padding: 3px 8px;
+    }
+
+    .langs {
+      font-size: 10.5px;
+      line-height: 1.5;
+    }
+
+    .langs b { font-weight: 700; }
+
+    .proj {
+      font-size: 10.5px;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .proj strong { display: block; font-size: 11px; }
+    .proj span { color: var(--muted); }
+
+    @media screen and (max-width: 900px) {
+      .sheet-wrap { padding: 8px 0 32px; }
+      .cv {
+        width: 100%;
+        min-height: 0;
+        max-height: none;
+        overflow: visible;
+        padding: 22px 18px 28px;
+        box-shadow: none;
+      }
+      header { grid-template-columns: 1fr; }
+      .contact { text-align: left; }
+      .layout { grid-template-columns: 1fr; }
+      .aside {
+        padding-left: 0;
+        border-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+        margin-top: 8px;
+      }
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      html, body { background: #fff; }
+      .toolbar { display: none !important; }
+      .sheet-wrap { padding: 0; }
+      .cv {
+        width: 210mm;
+        height: 297mm;
+        min-height: 297mm;
+        max-height: 297mm;
+        padding: 14mm 15mm 13mm;
+        box-shadow: none;
+        background: #fff;
+      }
+    }
+  </style>
+</head>
 <body>
-  <h1>Talel Zerai</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
-</body>
+  <div class="toolbar">
+    <button type="button" onclick="window.print()">Imprimer / PDF</button>
+    <a href="cv-talel-zerai.pdf" download>Télécharger le PDF</a>
+  </div>
 
+  <div class="sheet-wrap">
+    <article class="cv">
+      <header>
+        <div>
+          <h1>Talel Zerai</h1>
+          <p class="role">Responsable de communication et d’administration</p>
+        </div>
+        <p class="contact">
+          <a href="mailto:talelzerai@gmail.com">talelzerai@gmail.com</a><br />
+          +216 52 526 481<br />
+          <a href="https://www.linkedin.com/in/talel-zerai-91201986">linkedin.com/in/talel-zerai-91201986</a>
+        </p>
+        <p class="meta">Né le 22/04/1992 · Nationalité tunisienne · Riadh Andalous, Ariana, Tunisie</p>
+      </header>
+
+      <p class="profil">
+        Responsable de communication avec une double compétence administrative.
+        Expérience dans le secteur associatif et le conseil&nbsp;: stratégie digitale,
+        réseaux sociaux, relations médias, coordination de projets et suivi administratif.
+      </p>
+
+      <div class="layout">
+        <section>
+          <h2>Expérience professionnelle</h2>
+
+          <article class="job">
+            <div class="job-top">
+              <h3>Responsable de communication et de l’administration</h3>
+              <span class="dates">05/2022 – en cours</span>
+            </div>
+            <p class="org">Legal Agenda · Tunis</p>
+            <ul>
+              <li>Pilotage de la stratégie de communication (print, web, réseaux sociaux, événementiel).</li>
+              <li>Relations médias et diffusion de la revue et des publications.</li>
+              <li>Suivi administratif et financier&nbsp;: CNSS, banques, factures, archivage et reporting.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <h3>Porteur d’idée</h3>
+              <span class="dates">04/2021 – 07/2021</span>
+            </div>
+            <p class="org">Incubateur BIATLABS · Tunis</p>
+            <ul>
+              <li>Incubation d’un projet entrepreneurial au sein de BIATLABS.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <h3>Chargé de communication <em style="font-weight:500;color:#57534e;">(mi-temps)</em></h3>
+              <span class="dates">12/2020 – 02/2021</span>
+            </div>
+            <p class="org">Association Collectif Créatif · Médina de Tunis · <em>projet FAS / Tfanen – Creative Tunisia</em></p>
+            <ul>
+              <li>Stratégie digitale, outils de communication, animation de communauté et mise à jour du site.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <h3>Office Manager</h3>
+              <span class="dates">09/2017 – 04/2020</span>
+            </div>
+            <p class="org">TCB Consulting Services · Tunis</p>
+            <ul>
+              <li>Coordination du bureau, traitement du courrier et gestion de la communication interne et externe.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <h3>Coordinateur de projet</h3>
+              <span class="dates">01/2017 – 07/2017</span>
+            </div>
+            <p class="org">Association Le Chemin de la Dignité · Douar Hicher · <em>financé par l’IEMed</em></p>
+            <ul>
+              <li>Coordination du Pôle local d’égalité H/F&nbsp;: plan d’action, visibilité et reporting.</li>
+            </ul>
+          </article>
+
+          <article class="job">
+            <div class="job-top">
+              <h3>Coordinateur de projet &amp; chargé de communication</h3>
+              <span class="dates">08/2015 – 08/2016</span>
+            </div>
+            <p class="org">Association de la culture et de l’éducation de la citoyenneté · Bizerte · <em>Institut français de Tunis</em></p>
+            <ul>
+              <li>Conseil régional des jeunes&nbsp;: communication print et digitale, visuels et réseaux sociaux.</li>
+            </ul>
+          </article>
+        </section>
+
+        <aside class="aside">
+          <section class="edu">
+            <h2>Formation</h2>
+            <div class="edu-item">
+              <strong>Master professionnel — marketing digital et data analytics</strong>
+              <span>Espima Business School · 2018 – 2020</span>
+            </div>
+            <div class="edu-item">
+              <strong>Brevet de technicien supérieur — audiovisuel</strong>
+              <span>Centre de Formation Technologique de Tunis · 2015 – 2017</span>
+            </div>
+            <div class="edu-item">
+              <strong>Licence — génie mécanique, climatisation industrielle</strong>
+              <span>ISET Radès · 2011 – 2015</span>
+            </div>
+          </section>
+
+          <section class="side-block">
+            <h2>Compétences</h2>
+            <div class="chips">
+              <span>Réseaux sociaux</span>
+              <span>WordPress</span>
+              <span>Microsoft Office</span>
+              <span>Adobe Premiere</span>
+              <span>Photographie</span>
+              <span>Reporting</span>
+            </div>
+          </section>
+
+          <section class="side-block">
+            <h2>Langues</h2>
+            <p class="langs">
+              <b>Arabe</b> — langue maternelle<br />
+              <b>Français</b> — C1 / C2<br />
+              <b>Anglais</b> — C1
+            </p>
+          </section>
+
+          <section class="side-block">
+            <h2>Projets</h2>
+            <p class="proj">
+              <strong>Kyoof.com — 2020</strong>
+              <span>Site web social, projet de master en marketing digital.</span>
+            </p>
+            <p class="proj">
+              <strong>Rights Talks — 2015</strong>
+              <span>Conférence pour la Journée mondiale des droits de l’Homme.</span>
+            </p>
+          </section>
+        </aside>
+      </div>
+    </article>
+  </div>
+</body>
 </html>
